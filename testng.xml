@@ -5,7 +5,7 @@
 
     <test name="automationTasktbcbank">
         <classes>
-            <class name="automationTasktbcbank.ge.shouldValidateEmptyOffersAndResetFilters">
+            <class name="automationTasktbcbank.ge.automationTaskTbcBank">
 
             </class>
 

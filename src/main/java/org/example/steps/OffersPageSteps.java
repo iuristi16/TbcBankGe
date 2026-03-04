@@ -2,12 +2,8 @@ package org.example.steps;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.options.WaitForSelectorState;
+import org.example.data.Constants;
 import org.example.page.OffersPage;
-
-
-
-
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 
@@ -17,6 +13,11 @@ public class OffersPageSteps extends OffersPage {
     public OffersPageSteps(Page page) {
         super(page);
         this.page = page;
+    }
+
+    public OffersPageSteps openOffersPage() {
+        page.navigate(Constants.OFFERS_URL);
+        return this;
     }
 
     public OffersPageSteps verifyOffersPageOpened() {
@@ -35,7 +36,7 @@ public class OffersPageSteps extends OffersPage {
     }
 
     public OffersPageSteps filterPanelVisible2() {
-        assertThat(filterPanelCardType).isVisible();
+        assertThat(filterPanelOfferType).isVisible();
         return this;
     }
 
@@ -58,7 +59,7 @@ public class OffersPageSteps extends OffersPage {
     }
 
     public OffersPageSteps verifyNoOfferCardsDisplayed() {
-        assertThat(page.locator("app-marketing-list a[href*='/offers/all-offers/']")).hasCount(0);
+        assertThat(offerCardsDisplayed).hasCount(0);
         return this;
 
     }
@@ -77,7 +78,7 @@ public class OffersPageSteps extends OffersPage {
         return this;
     }
     public OffersPageSteps verifyOffersAreVisibleAgain() {
-        assertThat(offerCards).not().hasCount(0);
+        assertThat(offerCardsDisplayed).not().hasCount(1);
         return this;
     }
     }

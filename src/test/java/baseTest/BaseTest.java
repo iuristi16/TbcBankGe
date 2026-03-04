@@ -28,15 +28,29 @@ public class BaseTest {
         );
 
         page = context.newPage();
-        page.navigate(
-                Constants.OFFERS_URL,
-                new Page.NavigateOptions()
-                        .setTimeout(60_000)
-                        .setWaitUntil(WaitUntilState.LOAD)
-        );
+    }
 
-    }
     protected Page getPage() {
-        return page;
-    }
-}
+return page;
+    }}
+
+
+
+
+
+
+       // page.navigate(
+                //Constants.OFFERS_URL,
+               // new Page.NavigateOptions()
+                       // .setTimeout(60_000)
+                        //.setWaitUntil(WaitUntilState.LOAD)
+       // );
+
+               // Constants.BASE_URL,
+               // new Page.NavigateOptions()
+               //.setTimeout(3000)
+                //.setWaitUntil(WaitUntilState.LOAD)
+               //  );
+
+    //protected Page getPage() {
+       // return page;}}
