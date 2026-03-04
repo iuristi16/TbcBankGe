@@ -2,6 +2,7 @@ package org.example.steps;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import org.example.data.Constants;
 import org.example.page.LoansPage;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
@@ -14,10 +15,14 @@ public class LoansPageSteps extends LoansPage {
         super(page);
         this.page = page;
     }
-
+    public LoansPageSteps openBasePage() {
+        page.navigate(Constants.BASE_URL);
+        return this;
+    }
     public LoansPageSteps navigateToConsumerLoan() {
 
         loansMenu.click();
+        assertThat(page).hasURL(Constants.LOANS_URL);
         return this;
     }
 
@@ -26,41 +31,24 @@ public class LoansPageSteps extends LoansPage {
         assertThat(applayButton).isVisible();
         assertThat(applayButton).isEnabled();
         assertThat(headingPage).isVisible();
-        applayButton.click();
         return this;
     }
 
     public LoansPageSteps verifyRedirectToTbcCredit() {
-        Page newPage = page.waitForPopup(() -> {
-        });
-        assertThat(newPage).hasURL("https://tbccredit.ge/?source_caller=ui&shortlink=ularj23r&c=Acq_FCL_7_tbccredit.ge_Prompt_7&pid=tbccredit.ge&deep_link_value=offers%2F81621&af_xp=custom");
-        return this;
-    }
 
-    public LoansPageSteps validateDestinationPage() {
-
-        // 1️⃣ ვიჭერთ ახალ ტაბს
         Page newPage = page.waitForPopup(() -> {
             applayButton.click();
         });
 
-        // 2️⃣ გადავდივართ ახალ ტაბზე
         newPage.waitForLoadState();
-        // 3️⃣ ველოდებით ჩატვირთვას
-        page.waitForLoadState();
 
-        // 4️⃣ ვხურავთ cookie-ს თუ გამოჩნდა
-        Locator accept = page.locator("button:has-text('ვეთანხმები')");
-        if (accept.count() > 0) {
-            accept.first().click();
-        }
+        assertThat(newPage).hasURL(Constants.TBC_CREDIT_URL);
 
+        LoansPageSteps newLoansPage = new LoansPageSteps(newPage);
 
-        // 6️⃣ ვამოწმებთ რომ calculator ჩანს
-        assertThat(page.locator("#standard-calculator")).isVisible();
-
+        assertThat(newLoansPage.heroTitle).isVisible();
+        assertThat(newLoansPage.calculator).isVisible();
         return this;
+
     }
-
-
 }

@@ -6,6 +6,8 @@ import com.microsoft.playwright.options.WaitUntilState;
 import org.example.data.Constants;
 import org.testng.annotations.BeforeClass;
 import java.util.List;
+import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.options.AriaRole;
 public class BaseTest {
 
     protected Playwright playwright;
@@ -31,26 +33,15 @@ public class BaseTest {
     }
 
     protected Page getPage() {
-return page;
-    }}
+        return page;
+    }
+
+
+        }
 
 
 
 
 
 
-       // page.navigate(
-                //Constants.OFFERS_URL,
-               // new Page.NavigateOptions()
-                       // .setTimeout(60_000)
-                        //.setWaitUntil(WaitUntilState.LOAD)
-       // );
 
-               // Constants.BASE_URL,
-               // new Page.NavigateOptions()
-               //.setTimeout(3000)
-                //.setWaitUntil(WaitUntilState.LOAD)
-               //  );
-
-    //protected Page getPage() {
-       // return page;}}

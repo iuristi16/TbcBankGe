@@ -40,10 +40,10 @@ public class automationTaskTbcBank extends BaseTest {
 
     public void shouldRedirectToTbcCreditFromConsumerLoan() {
         new LoansPageSteps(page)
+                .openBasePage()
                 .navigateToConsumerLoan()
                 .verifyPage()
-                .verifyRedirectToTbcCredit()
-                .validateDestinationPage();
+                .verifyRedirectToTbcCredit();
 
 
 

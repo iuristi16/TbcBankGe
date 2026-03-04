@@ -52,14 +52,17 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
         }
 
         public LocationsPageSteps verifyFirstBranchesCard() {
-            assertThat(addressCard).isVisible();
-            assertThat(addressCard).not().hasText("");
-            assertThat(scheduleBlock).isVisible();
-            assertThat(scheduleBlock).isVisible();
-            String scheduleText = scheduleBlock.textContent();
-            int count = scheduleText.split("\\d{2}:\\d{2}").length - 1;
-            assertTrue(count >= 3, "Schedule must contain at least 3 time values (Week/Sat/Sun)");
-            return this;
-        }
+            if (fullTimeSchedule.count() > 0) {
+                assertThat(fullTimeSchedule).isVisible();
+            } else {
+                assertThat(addressBranchCard).isVisible();
+                assertThat(weekHours).isVisible();
+                assertThat(saturdayHours).isVisible();
+                assertThat(sundayHours).isVisible();
+            }
+                return this;
+            }
+
 
     }
+
