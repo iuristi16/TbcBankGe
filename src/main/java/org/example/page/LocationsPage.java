@@ -16,7 +16,10 @@ public class LocationsPage {
         this.atmCard = page.locator(".tbcx-pw-atm-branches-section__list-item").filter(new Locator.FilterOptions().setHasText("ATM")).first();
         this.addressCard = atmCard.locator(".tbcx-pw-atm-branches-section__list-item-title");
         this.branchButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("ფილიალები")).first();;
-        this.addressBranchCard = page.locator(".tbcx-pw-atm-branches-section__list-item").filter(new Locator.FilterOptions().setHasText("ფილიალები")).first();
+        this.addressBranchCard = page
+                .locator(".tbcx-pw-atm-branches-section__list-item")
+                .first();
+
         this.weekHours = addressBranchCard.first().getByText("ორშაბათი-პარასკევი: 10:00-18:00");
         this.saturdayHours = addressBranchCard.first().getByText("შაბათი: 10:00-14:00");
         this.fullTimeSchedule =  addressBranchCard.first().getByText("სამუშაო საათები - 24/7");
