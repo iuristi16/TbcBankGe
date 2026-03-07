@@ -3,10 +3,10 @@ package org.example.page;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import org.example.steps.OffersPageSteps;
+
 
 public class OffersPage {
-     public Locator pageHeading, filterPanelCategory,  filterPanelProdactType, filterPanelOfferType, filterPanelCardType, getOfferCards,  mastercardCheckbox, schoolCardChekbox, offerCards;
+     public Locator pageHeading, filterPanelCategory,  filterPanelProdactType, filterPanelOfferType, filterPanelCardType, getOfferCards,  mastercardCheckbox, schoolCardChekbox, offerCardsDisplayed,  offerCards;
 
 
     public OffersPage(Page page){
@@ -18,8 +18,8 @@ public class OffersPage {
        this.getOfferCards = page.locator("a[href*='/offers/all-offers/']");
        this.mastercardCheckbox = page.locator("div.filter-item:has-text('მასტერქარდი')");
        this.schoolCardChekbox = page.locator("div.filter-item:has-text('მოსწავლის ბარათი')");
-      // this.getEmptyStateText = page.locator("a[href*='/offers/all-offers/']");
-        this.offerCards = page.locator("app-marketing-list a[href*='/offers/all-offers/']");
+       this.offerCardsDisplayed = page.locator("app-marketing-list a[href*='/offers/all-offers/']");
+
 
 
 

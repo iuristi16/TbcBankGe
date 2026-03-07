@@ -6,6 +6,8 @@ import com.microsoft.playwright.options.WaitUntilState;
 import org.example.data.Constants;
 import org.testng.annotations.BeforeClass;
 import java.util.List;
+import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.options.AriaRole;
 public class BaseTest {
 
     protected Playwright playwright;
@@ -19,24 +21,28 @@ public class BaseTest {
 
         browser = playwright.chromium().launch(
                 new BrowserType.LaunchOptions()
-                        .setHeadless(false)
+                        .setHeadless(true)
                         .setArgs(List.of("--start-maximized"))
         );
 
         context = browser.newContext(
-                new Browser.NewContextOptions().setViewportSize(null)
+                new Browser.NewContextOptions().setViewportSize(1920, 1080)
+                //setViewportSize(null) ეს მთლიან ეკრანზე
         );
 
         page = context.newPage();
-        page.navigate(
-                Constants.OFFERS_URL,
-                new Page.NavigateOptions()
-                        .setTimeout(60_000)
-                        .setWaitUntil(WaitUntilState.LOAD)
-        );
-
     }
+
     protected Page getPage() {
         return page;
     }
-}
+
+
+        }
+
+
+
+
+
+
+
