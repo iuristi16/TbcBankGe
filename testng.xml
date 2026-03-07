@@ -5,7 +5,8 @@
 
     <test name="automationTasktbcbank">
         <classes>
-            <class name="automationTasktbcbank.ge.automationTaskTbcBank">
+            <class name="automationTasktbcbank.ge.automationTaskTbcBank"/>
+                <class name="automationTasktbcbank.ge.mobileAutomationTaskTbcBank">
 
             </class>
 
