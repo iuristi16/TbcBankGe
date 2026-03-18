@@ -21,12 +21,12 @@ public class BaseTest {
 
         browser = playwright.chromium().launch(
                 new BrowserType.LaunchOptions()
-                        .setHeadless(true)
+                        .setHeadless(false)
                         .setArgs(List.of("--start-maximized"))
         );
 
         context = browser.newContext(
-                new Browser.NewContextOptions().setViewportSize(1920, 1080)
+                new Browser.NewContextOptions().setViewportSize(null) //setViewportSize(1920, 1080)
                 //setViewportSize(null) ეს მთლიან ეკრანზე
         );
 
