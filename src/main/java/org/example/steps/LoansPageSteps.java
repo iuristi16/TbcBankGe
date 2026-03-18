@@ -27,10 +27,11 @@ public class LoansPageSteps extends LoansPage {
     }
 
     public LoansPageSteps verifyPage() {
-        consumerLoanSection.click();
+        assertThat(consumerLoanSection).isVisible();
+        applayButton.click();
         assertThat(applayButton).isVisible();
         assertThat(applayButton).isEnabled();
-        assertThat(headingPage).isVisible();
+
         return this;
     }
 

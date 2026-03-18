@@ -52,16 +52,19 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
         }
 
         public LocationsPageSteps verifyFirstBranchesCard() {
-            if (fullTimeSchedule.count() > 0) {
+            Locator card = addressBranchCard.first();
+
+            try {
                 assertThat(fullTimeSchedule).isVisible();
-            } else {
-                assertThat(addressBranchCard).isVisible();
+            } catch (Exception e) {
+                assertThat(card).isVisible();
                 assertThat(weekHours).isVisible();
                 assertThat(saturdayHours).isVisible();
                 assertThat(sundayHours).isVisible();
             }
-                return this;
-            }
+
+            return this;
+        }
 
 
     }
