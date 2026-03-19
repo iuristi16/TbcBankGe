@@ -66,11 +66,6 @@ public class OffersPageSteps extends OffersPage {
 
     public OffersPageSteps clearFilters() {
 
-        Locator clearButtons = page.getByRole(
-                com.microsoft.playwright.options.AriaRole.BUTTON,
-                new Page.GetByRoleOptions().setName("გასუფთავება")
-        );
-
         while (clearButtons.count() > 0) {
             clearButtons.first().click();
         }
