@@ -32,7 +32,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
         public LocationsPageSteps clickAtmsTab() {
             atmsButton.scrollIntoViewIfNeeded();
             atmsButton.click();
-            aTMcontent.waitFor();
+            atmCard.waitFor();
             return this;
         }
 

@@ -6,7 +6,7 @@ import com.microsoft.playwright.options.AriaRole;
 
 
 public class OffersPage {
-     public Locator pageHeading, filterPanelCategory,  filterPanelProdactType, filterPanelOfferType, filterPanelCardType, getOfferCards,  mastercardCheckbox, schoolCardChekbox, offerCardsDisplayed,  offerCards;
+     public Locator pageHeading, filterPanelCategory,  filterPanelProdactType, filterPanelOfferType, filterPanelCardType, getOfferCards,  mastercardCheckbox, schoolCardChekbox, offerCardsDisplayed, clearButtons;
 
 
     public OffersPage(Page page){
@@ -19,6 +19,7 @@ public class OffersPage {
        this.mastercardCheckbox = page.locator("div.filter-item:has-text('მასტერქარდი')");
        this.schoolCardChekbox = page.locator("div.filter-item:has-text('მოსწავლის ბარათი')");
        this.offerCardsDisplayed = page.locator("app-marketing-list a[href*='/offers/all-offers/']");
+       this.clearButtons = page.getByRole(com.microsoft.playwright.options.AriaRole.BUTTON, new Page.GetByRoleOptions().setName("გასუფთავება"));
 
 
 
